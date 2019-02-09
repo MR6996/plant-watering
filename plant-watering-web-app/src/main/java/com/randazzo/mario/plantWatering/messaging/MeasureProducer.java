@@ -11,29 +11,29 @@ import javax.jms.QueueSession;
 import javax.jms.Session;
 
 @Stateless
-public class ProducerBean implements IProducerBean {
+public class MeasureProducer implements IMeasureProducer {
 
 	@Resource(lookup = "java:/ConnectionFactory")
 	private QueueConnectionFactory connectionfactory;
 
-	@Resource(lookup = "java:/jms/queue/test")
-	Queue destinazione;
+	@Resource(lookup = "java:/jms/queue/pl")
+	Queue destination;
 
 	@Override
-	public void send(String param) {
+	public void send(String measure) {
 		
 		try {
-			QueueConnection connessione = connectionfactory.createQueueConnection();
-			QueueSession sessione = connessione.createQueueSession(true, Session.AUTO_ACKNOWLEDGE);
+			QueueConnection connection = connectionfactory.createQueueConnection();
+			QueueSession session = connection.createQueueSession(true, Session.AUTO_ACKNOWLEDGE);
 
-			MessageProducer produttore = sessione.createProducer(destinazione);
-			Message messaggio = sessione.createTextMessage(param);
+			MessageProducer producer = session.createProducer(destination);
+			Message measureMessage = session.createTextMessage(measure);
 
-			produttore.send(messaggio);
+			producer.send(measureMessage);
 
-			sessione.commit();
-			sessione.close();
-			connessione.close();
+			session.commit();
+			session.close();
+			connection.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

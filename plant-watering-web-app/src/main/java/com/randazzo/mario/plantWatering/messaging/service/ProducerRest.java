@@ -7,20 +7,20 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 
-import com.randazzo.mario.plantWatering.messaging.IProducerBean;
+import com.randazzo.mario.plantWatering.messaging.IMeasureProducer;
 
 @Path("/prod")
 @Stateless
 public class ProducerRest {
 
 	@EJB
-	IProducerBean producer;
+	IMeasureProducer measureProducer;
 	
 	@POST
 	@Consumes(MediaType.TEXT_PLAIN)
 	public String save(String p) {
 		
-		producer.send(p);
+		measureProducer.send(p);
 		
 		return "ok";
 	}

@@ -14,8 +14,8 @@ import com.randazzo.mario.plantWatering.model.Measure;
 
 @MessageDriven(activationConfig = {
 		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
-		@ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/test"), })
-public class MyMDB implements MessageListener {
+		@ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/pl"), })
+public class MeasureListener implements MessageListener {
 
 	Gson gson = new Gson();
 
@@ -23,11 +23,11 @@ public class MyMDB implements MessageListener {
 	MeasureDAO measureDAO;
 
 	@Override
-	public void onMessage(Message message) {
+	public void onMessage(Message measure) {
 
 		try {
-			if (message instanceof TextMessage) {
-				TextMessage msg = (TextMessage) message;
+			if (measure instanceof TextMessage) {
+				TextMessage msg = (TextMessage) measure;
 				System.out.println(msg.getText());
 
 				Measure m = gson.fromJson(msg.getText(), Measure.class);

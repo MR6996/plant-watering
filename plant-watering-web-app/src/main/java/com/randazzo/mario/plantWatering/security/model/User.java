@@ -15,14 +15,8 @@ import org.picketlink.idm.query.QueryParameter;
 @IdentityStereotype(USER)
 public class User extends AbstractIdentityType implements Account {
 
-	/**
-     * <p>Can be used to query users by their activation code.</p>
-     */
     public static final AttributeParameter ACTIVATION_CODE = QUERY_ATTRIBUTE.byName("activationCode");
 
-    /**
-     * <p>Can be used to query users by their login name.</p>
-     */
 	public static final QueryParameter USER_NAME = QUERY_ATTRIBUTE.byName("loginName");
 	
 	@StereotypeProperty(IDENTITY_USER_NAME)

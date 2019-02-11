@@ -1,36 +1,12 @@
-package com.randazzo.mario.plantWatering.model;
+package com.randazzo.mario.plantWatering.dto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+public class MeasureDTO {
 
-import com.randazzo.mario.plantWatering.model.Plant;
-
-@Entity(name = "measure")
-public class Measure {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long id;
-
-	@ManyToOne
-	@JoinColumn
-	private Plant plant;
-
-	@Column(nullable = false, precision = 2)
+	private PlantDTO plant;
 	private float externalTemperature;
-
-	@Column(nullable = false, precision = 2)
 	private float externalHumidity;
-
-	@Column(nullable = false, precision = 2)
 	private float internalTemperature;
-
-	@Column(nullable = false, precision = 2)
 	private float internalHumidity;
 
 	public long getId() {
@@ -41,11 +17,11 @@ public class Measure {
 		this.id = id;
 	}
 
-	public Plant getPlant() {
+	public PlantDTO getPlant() {
 		return plant;
 	}
 
-	public void setPlant(Plant plant) {
+	public void setPlant(PlantDTO plant) {
 		this.plant = plant;
 	}
 
@@ -97,7 +73,7 @@ public class Measure {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Measure other = (Measure) obj;
+		MeasureDTO other = (MeasureDTO) obj;
 		if (id != other.id)
 			return false;
 		return true;

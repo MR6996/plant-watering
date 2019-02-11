@@ -21,6 +21,7 @@ public class IdentityManagementConfiguration {
         		.named("default.config")
         			.stores()
         				.jpa()
+        					.supportCredentials(true)
         					.supportType(User.class)
         					.supportAllFeatures();
     }

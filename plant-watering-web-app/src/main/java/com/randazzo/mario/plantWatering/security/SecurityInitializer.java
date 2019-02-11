@@ -107,6 +107,8 @@ public class SecurityInitializer {
 
 
         User admin = new User(email);
+        admin.setFirstName("Admin");
+        admin.setLastName("Admin");
 
         identityManager.add(admin);
 

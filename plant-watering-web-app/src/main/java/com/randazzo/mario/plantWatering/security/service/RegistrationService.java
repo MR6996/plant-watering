@@ -4,8 +4,6 @@ package com.randazzo.mario.plantWatering.security.service;
 import static com.randazzo.mario.plantWatering.security.model.ApplicationRole.USER;
 
 import javax.ejb.Stateless;
-import javax.enterprise.event.Event;
-import javax.enterprise.inject.Any;
 import javax.inject.Inject;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -15,7 +13,6 @@ import javax.ws.rs.core.Response;
 
 import org.picketlink.idm.credential.Token;
 
-import com.randazzo.mario.plantWatering.model.Email;
 import com.randazzo.mario.plantWatering.security.model.IdentityModelManager;
 import com.randazzo.mario.plantWatering.security.model.User;
 import com.randazzo.mario.plantWatering.security.model.UserRegistration;
@@ -48,9 +45,6 @@ public class RegistrationService {
 	@Inject
 	private IdentityModelManager identityModelManager;
 
-	@Inject
-	@Any
-	private Event<Email> event;
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
@@ -65,12 +59,8 @@ public class RegistrationService {
 			// if there is no user with the provided e-mail, perform registration
 			if (this.identityModelManager.findByLoginName(request.getEmail()) == null) {
 				User newUser = this.identityModelManager.createAccount(request);
-
 				this.identityModelManager.grantRole(newUser, USER);
-
 				String activationCode = newUser.getActivationCode();
-
-				sendNotification(request, activationCode);
 
 				message = MessageBuilder.ok().activationCode(activationCode);
 			} else {
@@ -100,10 +90,4 @@ public class RegistrationService {
 		return message.build();
 	}
 
-	private void sendNotification(UserRegistration request, String activationCode) {
-		Email email = new Email("Please complete the signup",
-				"http://localhost:8080/rest_test/#/activate/" + activationCode, request.getEmail());
-
-		event.fire(email);
-	}
 }

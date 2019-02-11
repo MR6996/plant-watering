@@ -13,11 +13,14 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.picketlink.authorization.annotations.LoggedIn;
+
 import com.randazzo.mario.plantWatering.dao.PlantDAO;
 import com.randazzo.mario.plantWatering.model.Plant;
 
-@Path("/plant")
+@Path("/private/plant")
 @Stateless
+@LoggedIn
 public class PlantREST implements Serializable {
 	
 	@Inject 

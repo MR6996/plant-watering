@@ -10,22 +10,28 @@ import javax.persistence.ManyToOne;
 
 import com.randazzo.mario.plantWatering.model.Plant;
 
-@Entity(name="measure")
+@Entity(name = "measure")
 public class Measure {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long id;
-	
+
 	@ManyToOne
 	@JoinColumn
 	private Plant plant;
-	
-	@Column(nullable=false, precision=2)
+
+	@Column(nullable = false, precision = 2)
 	private float externalTemperature;
-	
-	@Column(nullable=false, precision=2)
+
+	@Column(nullable = false, precision = 2)
 	private float externalHumidity;
+
+	@Column(nullable = false, precision = 2)
+	private float internalTemperature;
+
+	@Column(nullable = false, precision = 2)
+	private float internallHumidity;
 
 	public long getId() {
 		return id;
@@ -59,6 +65,22 @@ public class Measure {
 		this.externalHumidity = externalHumidity;
 	}
 
+	public float getInternalTemperature() {
+		return internalTemperature;
+	}
+
+	public void setInternalTemperature(float internalTemperature) {
+		this.internalTemperature = internalTemperature;
+	}
+
+	public float getInternallHumidity() {
+		return internallHumidity;
+	}
+
+	public void setInternallHumidity(float internallHumidity) {
+		this.internallHumidity = internallHumidity;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -80,7 +102,5 @@ public class Measure {
 			return false;
 		return true;
 	}
-	
-	
-	
+
 }

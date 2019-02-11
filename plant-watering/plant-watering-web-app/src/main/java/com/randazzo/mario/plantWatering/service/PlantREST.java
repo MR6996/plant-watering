@@ -31,7 +31,7 @@ public class PlantREST implements Serializable {
 	public String save(Plant p) {
 		Plant pCopy = new Plant();
 		pCopy.setName(p.getName());
-		pCopy.setType(p.getType());
+		pCopy.setDescription(p.getDescription());
 		plantDAO.save(pCopy);
 		
 		return "ok";

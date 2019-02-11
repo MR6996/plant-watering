@@ -20,7 +20,7 @@ public class PlantDAO implements Serializable {
 	public void save(Plant p) {
 		Plant newP = new Plant();
 		newP.setName(p.getName());
-		newP.setType(p.getType());
+		newP.setDescription(p.getDescription());
 		em.persist(newP);
 	}
 

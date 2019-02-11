@@ -8,14 +8,14 @@ import javax.persistence.JoinColumn;
 
 import com.randazzo.mario.plantWatering.security.model.User;
 
-@Entity(name="plant")
+@Entity(name = "plant")
 public class Plant {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	private String name;
-	private String type;
+	private String description;
 
 	@JoinColumn
 	private User user;
@@ -36,12 +36,12 @@ public class Plant {
 		this.name = name;
 	}
 
-	public String getType() {
-		return type;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public User getUser() {
@@ -75,11 +75,6 @@ public class Plant {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Plant [id=" + id + ", name=" + name + ", type=" + type + "]";
 	}
 
 }

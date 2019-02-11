@@ -2,11 +2,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.randazzo.mario</groupId>
+	<parent>
+		<groupId>com.randazzo.mario</groupId>
+		<artifactId>plant-watering</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
 	<artifactId>plant-watering-web-app</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	
+
+
+
 	<name>plant-watering-web-app</name>
 
 	<properties>
@@ -15,11 +21,11 @@
 
 		<!-- wildfly-war-plugin -->
 		<version.wildfly.maven.plugin>2.0.0.Final</version.wildfly.maven.plugin>
-		
+
 		<!-- picketlink -->
 		<version.picketlink>2.7.1.Final</version.picketlink>
-		
-			
+
+
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>

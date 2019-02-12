@@ -22,7 +22,7 @@ import com.randazzo.mario.plantWatering.model.Plant;
 @Stateless
 @LoggedIn
 public class PlantREST implements Serializable {
-	
+		
 	@Inject 
 	private PlantDAO plantDAO;
 	

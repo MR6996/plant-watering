@@ -1,5 +1,7 @@
 package com.randazzo.mario.plantWatering.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +11,7 @@ import javax.persistence.JoinColumn;
 import com.randazzo.mario.plantWatering.security.model.User;
 
 @Entity(name = "plant")
-public class Plant {
+public class Plant implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)

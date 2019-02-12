@@ -1,5 +1,7 @@
 package com.randazzo.mario.plantWatering.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +13,7 @@ import javax.persistence.ManyToOne;
 import com.randazzo.mario.plantWatering.model.Plant;
 
 @Entity(name = "measure")
-public class Measure {
+public class Measure implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)

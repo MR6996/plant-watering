@@ -11,7 +11,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.randazzo.mario.plantWatering.converter.UserRegistrationConverter;
+import com.randazzo.mario.plantWatering.converter.Converter;
+import com.randazzo.mario.plantWatering.converter.annotation.UserRegistrationType;
 import com.randazzo.mario.plantWatering.dto.security.UserRegistrationDTO;
 import com.randazzo.mario.plantWatering.security.model.IdentityModelManager;
 import com.randazzo.mario.plantWatering.security.model.User;
@@ -25,10 +26,10 @@ public class RegistrationService {
 
 	@Inject
 	private IdentityModelManager identityModelManager;
-
 	
 	@Inject
-	private UserRegistrationConverter registrationConverter;
+	@UserRegistrationType
+	private Converter<UserRegistration, UserRegistrationDTO> registrationConverter;
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)

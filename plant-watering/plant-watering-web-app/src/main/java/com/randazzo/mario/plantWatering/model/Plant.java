@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 @Entity(name = "plant")
 public class Plant implements Serializable {
 
+	private static final long serialVersionUID = -2130164883880126879L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;

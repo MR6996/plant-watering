@@ -15,6 +15,8 @@ import com.randazzo.mario.plantWatering.model.Plant;
 @Entity(name = "measure")
 public class Measure implements Serializable {
 
+	private static final long serialVersionUID = 7951072789957877455L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long id;

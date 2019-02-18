@@ -8,7 +8,7 @@ import com.randazzo.mario.plantWatering.model.Plant;
 public class PlantConverter implements Converter<Plant, PlantDTO> {
 
 	@Inject
-	UserConverter userConverter;
+	PersonConverter personConverter;
 	
 	@Override
 	public PlantDTO entityToDto(Plant entity) {
@@ -16,7 +16,7 @@ public class PlantConverter implements Converter<Plant, PlantDTO> {
 		dto.setId(entity.getId());
 		dto.setName(entity.getName());
 		dto.setDescription(entity.getDescription());
-		dto.setUser(userConverter.entityToDto(entity.getUser()));
+		dto.setPerson(personConverter.entityToDto(entity.getPerson()));
 		return dto;
 	}
 

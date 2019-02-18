@@ -1,26 +1,20 @@
 package com.randazzo.mario.plantWatering.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
-@Entity(name = "plant")
-public class Plant implements Serializable {
+@Entity(name = "person")
+public class Person {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long id;
-	private String name;
-	private String description;
+	Long id;
 
-	@ManyToOne
-	@JoinColumn
-	private Person person;
+	private String firstName;
+	private String lastName;
+	private String email;
 
 	public Long getId() {
 		return id;
@@ -30,28 +24,28 @@ public class Plant implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	public Person getPerson() {
-		return person;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setPerson(Person person) {
-		this.person = person;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override
@@ -70,7 +64,7 @@ public class Plant implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Plant other = (Plant) obj;
+		Person other = (Person) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

@@ -1,11 +1,14 @@
 package com.randazzo.mario.plantWatering.security.model.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 import org.picketlink.idm.jpa.annotations.AttributeValue;
 import org.picketlink.idm.jpa.annotations.entity.IdentityManaged;
 import org.picketlink.idm.jpa.model.sample.simple.IdentityTypeEntity;
 
+import com.randazzo.mario.plantWatering.model.Person;
 import com.randazzo.mario.plantWatering.security.model.User;
 
 @Entity
@@ -14,15 +17,11 @@ public class UserTypeEntity extends IdentityTypeEntity {
 
 	@AttributeValue
 	private String loginName;
-
+	
+    @OneToOne (cascade = CascadeType.ALL)
 	@AttributeValue
-	private String activationCode;
+	private Person person;
 
-	@AttributeValue
-	private String firstName;
-
-	@AttributeValue
-	private String lastName;
 
 	public String getLoginName() {
 		return loginName;
@@ -32,28 +31,12 @@ public class UserTypeEntity extends IdentityTypeEntity {
 		this.loginName = loginName;
 	}
 
-	public String getActivationCode() {
-		return activationCode;
+	public Person getPerson() {
+		return person;
 	}
 
-	public void setActivationCode(String activationCode) {
-		this.activationCode = activationCode;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 
 }

@@ -52,10 +52,6 @@ public class MessageBuilder {
         return this;
     }
 
-    public MessageBuilder activationCode(String activationCode) {
-        this.messageData.put(ACTIVATION_CODE_PARAMETER, activationCode);
-        return this;
-    }
 
     public MessageBuilder token(String token) {
         this.messageData.put(TOKEN_PARAMETER, token);

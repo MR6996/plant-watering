@@ -9,6 +9,7 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 
+import javax.ejb.Startup;
 import javax.ejb.Stateless;
 import javax.enterprise.event.Observes;
 
@@ -21,6 +22,7 @@ import org.picketlink.idm.model.Attribute;
 import org.picketlink.idm.model.basic.Realm;
 import org.picketlink.idm.model.basic.Role;
 
+import com.randazzo.mario.plantWatering.model.Person;
 import com.randazzo.mario.plantWatering.security.model.ApplicationRole;
 import com.randazzo.mario.plantWatering.security.model.User;
 
@@ -98,24 +100,25 @@ public class SecurityInitializer {
 
     public void createAdminAccount(PartitionManager partitionManager) {
         IdentityManager identityManager = partitionManager.createIdentityManager();
-        String email = "admin@picketlink.org";
-
+        String email = "admin@admin.com";
+        Person person = new Person();
+        
         // if admin exists dont create again
         if(findByLoginName(email, identityManager) != null) {
             return;
         }
 
-
-        User admin = new User(email);
-        admin.setFirstName("Admin");
-        admin.setLastName("Admin");
-
+        person.setEmail(email);
+        person.setFirstName("Admin");
+        person.setLastName("Admin");
+        
+        User admin = new User();
+        admin.setLoginName(email);
+        admin.setPerson(person);
+        
         identityManager.add(admin);
-
         identityManager.updateCredential(admin, new Password("admin"));
-
         Role adminRole = getRole(identityManager, ApplicationRole.ADMINISTRATOR);
-
         grantRole(partitionManager.createRelationshipManager(), admin, adminRole);
     }
 }

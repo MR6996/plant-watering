@@ -1,11 +1,12 @@
 package com.randazzo.mario.plantWatering.dto;
 
-public class PlantDTO {
+public class PersonDTO {
+	
+	Long id;
 
-	private Long id;
-	private String name;
-	private String description;
-	private PersonDTO person;
+	private String firstName;
+	private String lastName;
+	private String email;
 
 	public Long getId() {
 		return id;
@@ -15,28 +16,28 @@ public class PlantDTO {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	public PersonDTO getPerson() {
-		return person;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setPerson(PersonDTO person) {
-		this.person = person;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override
@@ -55,7 +56,7 @@ public class PlantDTO {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PlantDTO other = (PlantDTO) obj;
+		PersonDTO other = (PersonDTO) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

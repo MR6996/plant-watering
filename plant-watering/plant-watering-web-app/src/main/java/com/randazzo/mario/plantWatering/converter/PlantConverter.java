@@ -20,4 +20,13 @@ public class PlantConverter implements Converter<Plant, PlantDTO> {
 		return dto;
 	}
 
+	@Override
+	public Plant dtoToEntity(PlantDTO dto) {
+		Plant entity = new Plant();
+		entity.setName(dto.getName());
+		entity.setDescription(dto.getDescription());
+		entity.setPerson(personConverter.dtoToEntity(dto.getPerson()));
+		return null;
+	}
+
 }

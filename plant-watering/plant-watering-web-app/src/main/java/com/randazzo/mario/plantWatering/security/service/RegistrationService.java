@@ -11,6 +11,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.randazzo.mario.plantWatering.converter.UserRegistrationConverter;
+import com.randazzo.mario.plantWatering.dto.security.UserRegistrationDTO;
 import com.randazzo.mario.plantWatering.security.model.IdentityModelManager;
 import com.randazzo.mario.plantWatering.security.model.User;
 import com.randazzo.mario.plantWatering.security.model.UserRegistration;
@@ -24,10 +26,14 @@ public class RegistrationService {
 	@Inject
 	private IdentityModelManager identityModelManager;
 
+	
+	@Inject
+	private UserRegistrationConverter registrationConverter;
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response createMember(UserRegistration request) {
+	public Response createMember(UserRegistrationDTO request) {
+		UserRegistration resistrationRequest = registrationConverter.dtoToEntity(request);
 		if (!request.getPassword().equals(request.getPasswordConfirmation())) {
 			return MessageBuilder.badRequest().message("Password mismatch.").build();
 		}
@@ -35,9 +41,8 @@ public class RegistrationService {
 		MessageBuilder message;
 
 		try {
-			// if there is no user with the provided e-mail, perform registration
 			if (this.identityModelManager.findByLoginName(request.getEmail()) == null) {
-				User newUser = this.identityModelManager.createAccount(request);
+				User newUser = this.identityModelManager.createAccount(resistrationRequest);
 				this.identityModelManager.grantRole(newUser, USER);
 
 				message = MessageBuilder.ok();

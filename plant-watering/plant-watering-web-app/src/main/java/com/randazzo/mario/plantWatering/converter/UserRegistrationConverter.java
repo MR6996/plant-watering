@@ -16,4 +16,15 @@ public class UserRegistrationConverter implements Converter<UserRegistration, Us
 		return dto;
 	}
 
+	@Override
+	public UserRegistration dtoToEntity(UserRegistrationDTO dto) {
+		UserRegistration entity = new UserRegistration();
+		entity.setEmail(dto.getEmail());
+		entity.setFirstName(dto.getFirstName());
+		entity.setLastName(dto.getLastName());
+		entity.setPassword(dto.getPassword());
+		entity.setPasswordConfirmation(dto.getPasswordConfirmation());
+		return null;
+	}
+
 }

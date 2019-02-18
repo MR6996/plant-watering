@@ -12,13 +12,23 @@ public class MeasureConverter implements Converter<Measure, MeasureDTO> {
 	@Override
 	public MeasureDTO entityToDto(Measure entity) {
 		MeasureDTO dto = new MeasureDTO();
-		dto.setId(entity.getId());
 		dto.setExternalHumidity(entity.getExternalHumidity());
 		dto.setExternalTemperature(entity.getExternalTemperature());
 		dto.setInternalHumidity(entity.getInternalHumidity());
 		dto.setInternalTemperature(entity.getInternalTemperature());
 		dto.setPlant(plantConverter.entityToDto(entity.getPlant()));
 		return dto;
+	}
+
+	@Override
+	public Measure dtoToEntity(MeasureDTO dto) {
+		Measure entity = new Measure();
+		entity.setExternalHumidity(dto.getExternalHumidity());
+		entity.setExternalTemperature(dto.getExternalTemperature());
+		entity.setInternalHumidity(dto.getInternalHumidity());
+		entity.setInternalTemperature(dto.getInternalTemperature());
+		entity.setPlant(plantConverter.dtoToEntity(dto.getPlant()));
+		return null;
 	}
 
 

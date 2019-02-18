@@ -14,6 +14,15 @@ public class PersonConverter implements Converter<Person, PersonDTO> {
 		return null;
 	}
 
+	@Override
+	public Person dtoToEntity(PersonDTO dto) {
+		Person entity = new Person();
+		entity.setEmail(dto.getEmail());
+		entity.setFirstName(dto.getFirstName());
+		entity.setLastName(dto.getLastName());
+		return entity;
+	}
+
 	
 
 }

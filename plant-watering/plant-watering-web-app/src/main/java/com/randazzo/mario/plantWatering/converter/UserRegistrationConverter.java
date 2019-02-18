@@ -1,9 +1,16 @@
 package com.randazzo.mario.plantWatering.converter;
 
+import javax.ejb.Stateless;
+
+import com.randazzo.mario.plantWatering.converter.annotation.UserRegistrationType;
 import com.randazzo.mario.plantWatering.dto.security.UserRegistrationDTO;
 import com.randazzo.mario.plantWatering.security.model.UserRegistration;
 
+@Stateless
+@UserRegistrationType
 public class UserRegistrationConverter implements Converter<UserRegistration, UserRegistrationDTO> {
+
+	private static final long serialVersionUID = 2971263191521916895L;
 
 	@Override
 	public UserRegistrationDTO entityToDto(UserRegistration entity) {
@@ -24,7 +31,7 @@ public class UserRegistrationConverter implements Converter<UserRegistration, Us
 		entity.setLastName(dto.getLastName());
 		entity.setPassword(dto.getPassword());
 		entity.setPasswordConfirmation(dto.getPasswordConfirmation());
-		return null;
+		return entity;
 	}
 
 }

@@ -1,6 +1,8 @@
 package com.randazzo.mario.plantWatering.converter;
 
-public interface Converter<E, D> {
+import java.io.Serializable;
+
+public interface Converter<E, D> extends Serializable {
 
 	public D entityToDto(E entity);
 	

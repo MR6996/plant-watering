@@ -1,6 +1,10 @@
 package com.randazzo.mario.plantWatering.dto.security;
 
-public class UserRegistrationDTO {
+import java.io.Serializable;
+
+public class UserRegistrationDTO implements Serializable {
+
+	private static final long serialVersionUID = 9124767569387172759L;
 
 	private String firstName;
 	private String lastName;
@@ -46,6 +50,55 @@ public class UserRegistrationDTO {
 
 	public void setPasswordConfirmation(String passwordConfirmation) {
 		this.passwordConfirmation = passwordConfirmation;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((passwordConfirmation == null) ? 0 : passwordConfirmation.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UserRegistrationDTO other = (UserRegistrationDTO) obj;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (lastName == null) {
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (passwordConfirmation == null) {
+			if (other.passwordConfirmation != null)
+				return false;
+		} else if (!passwordConfirmation.equals(other.passwordConfirmation))
+			return false;
+		return true;
 	}
 
 }

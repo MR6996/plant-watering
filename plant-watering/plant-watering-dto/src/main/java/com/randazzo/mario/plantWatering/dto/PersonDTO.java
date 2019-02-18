@@ -1,20 +1,14 @@
 package com.randazzo.mario.plantWatering.dto;
 
-public class PersonDTO {
-	
-	Long id;
+import java.io.Serializable;
+
+public class PersonDTO implements Serializable {
+
+	private static final long serialVersionUID = 7292348197795344796L;
 
 	private String firstName;
 	private String lastName;
 	private String email;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getFirstName() {
 		return firstName;
@@ -44,7 +38,9 @@ public class PersonDTO {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		return result;
 	}
 
@@ -57,10 +53,20 @@ public class PersonDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		PersonDTO other = (PersonDTO) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (email == null) {
+			if (other.email != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!email.equals(other.email))
+			return false;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (lastName == null) {
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
 			return false;
 		return true;
 	}

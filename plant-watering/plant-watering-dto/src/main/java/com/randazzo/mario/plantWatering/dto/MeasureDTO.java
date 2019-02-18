@@ -1,21 +1,16 @@
 package com.randazzo.mario.plantWatering.dto;
 
-public class MeasureDTO {
+import java.io.Serializable;
 
-	private long id;
+public class MeasureDTO implements Serializable {
+
+	private static final long serialVersionUID = -2342075750185903700L;
+
 	private PlantDTO plant;
 	private float externalTemperature;
 	private float externalHumidity;
 	private float internalTemperature;
 	private float internalHumidity;
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	public PlantDTO getPlant() {
 		return plant;
@@ -61,7 +56,11 @@ public class MeasureDTO {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + Float.floatToIntBits(externalHumidity);
+		result = prime * result + Float.floatToIntBits(externalTemperature);
+		result = prime * result + Float.floatToIntBits(internalHumidity);
+		result = prime * result + Float.floatToIntBits(internalTemperature);
+		result = prime * result + ((plant == null) ? 0 : plant.hashCode());
 		return result;
 	}
 
@@ -74,9 +73,22 @@ public class MeasureDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		MeasureDTO other = (MeasureDTO) obj;
-		if (id != other.id)
+		if (Float.floatToIntBits(externalHumidity) != Float.floatToIntBits(other.externalHumidity))
+			return false;
+		if (Float.floatToIntBits(externalTemperature) != Float.floatToIntBits(other.externalTemperature))
+			return false;
+		if (Float.floatToIntBits(internalHumidity) != Float.floatToIntBits(other.internalHumidity))
+			return false;
+		if (Float.floatToIntBits(internalTemperature) != Float.floatToIntBits(other.internalTemperature))
+			return false;
+		if (plant == null) {
+			if (other.plant != null)
+				return false;
+		} else if (!plant.equals(other.plant))
 			return false;
 		return true;
 	}
+
+	
 
 }

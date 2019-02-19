@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">PlantWateringApp</string>
+    <string name="app_name">Plant Watering App</string>
+    <string name="main_username_hint">Insert username</string>
+    <string name="main_password_hint">Insert password</string>
+    <string name="main_login_button">Login</string>
+    <string name="main_register_button">Register</string>
+    <string name="main_settings_button">settings</string>
 </resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Debug">
+
+        <EditTextPreference
+            android:id="@+id/preference_server_ip"
+            android:defaultValue="0.0.0.0"
+            android:key="@string/preferences_debug_server_ip_key"
+            android:summary="IP address to AP"
+            android:title="Server IP" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

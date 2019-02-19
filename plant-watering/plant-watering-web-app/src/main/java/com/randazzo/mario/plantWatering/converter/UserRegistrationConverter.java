@@ -14,6 +14,8 @@ public class UserRegistrationConverter implements Converter<UserRegistration, Us
 
 	@Override
 	public UserRegistrationDTO entityToDto(UserRegistration entity) {
+		if(entity == null) return null;
+		
 		UserRegistrationDTO dto = new UserRegistrationDTO();
 		dto.setEmail(entity.getEmail());
 		dto.setFirstName(entity.getFirstName());
@@ -25,6 +27,8 @@ public class UserRegistrationConverter implements Converter<UserRegistration, Us
 
 	@Override
 	public UserRegistration dtoToEntity(UserRegistrationDTO dto) {
+		if(dto == null) return null;
+		
 		UserRegistration entity = new UserRegistration();
 		entity.setEmail(dto.getEmail());
 		entity.setFirstName(dto.getFirstName());

@@ -22,6 +22,8 @@ public class PlantConverter implements Converter<Plant, PlantDTO> {
 	
 	@Override
 	public PlantDTO entityToDto(Plant entity) {
+		if(entity == null) return null;
+		
 		PlantDTO dto = new PlantDTO();
 		dto.setName(entity.getName());
 		dto.setDescription(entity.getDescription());
@@ -31,6 +33,8 @@ public class PlantConverter implements Converter<Plant, PlantDTO> {
 
 	@Override
 	public Plant dtoToEntity(PlantDTO dto) {
+		if(dto == null) return null;
+		
 		Plant entity = new Plant();
 		entity.setName(dto.getName());
 		entity.setDescription(dto.getDescription());

@@ -22,6 +22,8 @@ public class MeasureConverter implements Converter<Measure, MeasureDTO> {
 	
 	@Override
 	public MeasureDTO entityToDto(Measure entity) {
+		if(entity == null) return null;
+		
 		MeasureDTO dto = new MeasureDTO();
 		dto.setExternalHumidity(entity.getExternalHumidity());
 		dto.setExternalTemperature(entity.getExternalTemperature());
@@ -33,6 +35,8 @@ public class MeasureConverter implements Converter<Measure, MeasureDTO> {
 
 	@Override
 	public Measure dtoToEntity(MeasureDTO dto) {
+		if(dto == null) return null;
+		
 		Measure entity = new Measure();
 		entity.setExternalHumidity(dto.getExternalHumidity());
 		entity.setExternalTemperature(dto.getExternalTemperature());

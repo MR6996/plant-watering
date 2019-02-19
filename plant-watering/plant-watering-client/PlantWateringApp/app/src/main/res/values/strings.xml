@@ -5,4 +5,10 @@
     <string name="main_login_button">Login</string>
     <string name="main_register_button">Register</string>
     <string name="main_settings_button">settings</string>
+    <string name="register_confirm_button">Confirm</string>
+    <string name="register_password_confirmation_hint">Insert password confirmation</string>
+    <string name="register_password_hint">Insert password</string>
+    <string name="register_e_mail_hint">Insert E-mail</string>
+    <string name="register_last_name_hint">Insert last name</string>
+    <string name="register_first_name_hint">Insert first name</string>
 </resources>

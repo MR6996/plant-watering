@@ -25,10 +25,17 @@
         </activity>
         <activity
             android:name=".activity.RegisterActivity"
+            android:label="Registration"
             android:parentActivityName=".activity.MainActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.SettingsActivity" />
-        <activity android:name=".activity.PlantActivity"></activity>
+        <activity
+            android:name=".activity.SettingsActivity"
+            android:label="Settings"
+            android:parentActivityName=".activity.MainActivity" />
+        <activity
+            android:name=".activity.PlantActivity"
+            android:label="My plants"
+            android:parentActivityName=".activity.MainActivity" />
     </application>
 
 </manifest>

@@ -12,4 +12,6 @@
     <string name="register_last_name_hint">Insert last name</string>
     <string name="register_first_name_hint">Insert first name</string>
     <string name="preferences_debug_server_ip_key">preference_debug_server_ip</string>
+    <string name="error">Error</string>
+    <string name="loding_data_message">Loding data…</string>
 </resources>

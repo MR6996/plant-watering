@@ -7,16 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.randazzo.mario.plantWatering.dto.PlantDTO;
 import com.randazzo.mario.plantwateringapp.R;
 
-import org.json.JSONArray;
-import org.json.JSONException;
+import java.util.List;
 
 public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantHolder> {
 
-    private JSONArray plants;
+    private List<PlantDTO> plants;
 
-    public PlantAdapter(JSONArray plants) {
+    public PlantAdapter(List<PlantDTO> plants) {
         this.plants = plants;
     }
 
@@ -31,17 +31,13 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantHolder>
 
     @Override
     public void onBindViewHolder(@NonNull PlantHolder plantHolder, int i) {
-        try {
-            plantHolder.name.setText(plants.getJSONObject(i).getString("name"));
-            plantHolder.description.setText(plants.getJSONObject(i).getString("description"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        plantHolder.name.setText(plants.get(i).getName());
+        plantHolder.description.setText(plants.get(i).getDescription());
     }
 
     @Override
     public int getItemCount() {
-        return plants.length();
+        return plants.size();
     }
 
     class PlantHolder extends RecyclerView.ViewHolder {

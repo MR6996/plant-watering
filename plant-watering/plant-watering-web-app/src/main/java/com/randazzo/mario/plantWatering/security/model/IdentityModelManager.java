@@ -30,7 +30,7 @@ public class IdentityModelManager {
 
     @Inject
     private Token.Provider<JWSToken> tokenProvider;
-
+    
     public static User findByLoginName(String loginName, IdentityManager identityManager) {
         if (loginName == null) {
             throw new IllegalArgumentException("Invalid login name.");
@@ -49,7 +49,7 @@ public class IdentityModelManager {
 
         return null;
     }
-
+    
     public User createAccount(UserRegistration request) {
         if (!request.isValid()) {
             throw new IllegalArgumentException("Insuficient information.");
@@ -69,6 +69,12 @@ public class IdentityModelManager {
 
         return newUser;
     }
+    
+    public Token activateAccount(User user) {
+    	user.setEnabled(true);
+    	this.identityManager.update(user);
+    	return issueToken(user);
+    } 
 
     public void updatePassword(Account account, String password) {
         this.identityManager.updateCredential(account, new Password(password));

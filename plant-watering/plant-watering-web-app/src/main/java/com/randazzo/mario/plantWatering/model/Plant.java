@@ -1,13 +1,17 @@
 package com.randazzo.mario.plantWatering.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity(name = "plant")
 public class Plant implements Serializable {
@@ -20,7 +24,7 @@ public class Plant implements Serializable {
 	private String name;
 	private String description;
 
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn
 	private Person person;
 

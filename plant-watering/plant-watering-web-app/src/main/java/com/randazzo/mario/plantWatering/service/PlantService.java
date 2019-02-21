@@ -36,13 +36,32 @@ public class PlantService implements Serializable {
 	private Converter<Plant, PlantDTO> plantConverter;
 
 	@POST
+	@Path("/add")
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response save(PlantDTO request) {
 		MessageBuilder message;
 
 		try {
 			plantDAO.save(plantConverter.dtoToEntity(request));
-			message = MessageBuilder.ok();
+			message = MessageBuilder.ok().message("Saved successfully!");
+		} catch (Exception e) {
+			message = MessageBuilder.badRequest().message(e.getCause() + ": " + e.getMessage());
+		}
+
+		return message.build();
+	}
+	
+	@POST
+	@Path("/update")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response update(PlantDTO request) {
+		MessageBuilder message;
+
+		try {
+			plantDAO.update(plantConverter.dtoToEntity(request));
+			message = MessageBuilder.ok().message("Updated successfully!");
 		} catch (Exception e) {
 			message = MessageBuilder.badRequest().message(e.getCause() + ": " + e.getMessage());
 		}
@@ -65,4 +84,5 @@ public class PlantService implements Serializable {
 				.map(p->{return plantConverter.entityToDto(p);})
 				.collect(Collectors.toList());
 	}
+	
 }

@@ -1,6 +1,7 @@
 package com.randazzo.mario.plantwateringapp.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,10 +9,13 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.PreferenceManager;
 
+import com.android.volley.VolleyError;
 import com.randazzo.mario.plantwateringapp.R;
+import com.randazzo.mario.plantwateringapp.util.Messages;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+    protected Context ctx;
     protected SharedPreferences preferences;
     protected String urlServer;
 
@@ -25,6 +29,8 @@ public abstract class BaseActivity extends AppCompatActivity {
                 "0.0.0.0"
         );
         urlServer = "http://" + serverIp + ":8080/pl-webapp/";
+
+        ctx = this;
     }
 
 
@@ -45,4 +51,14 @@ public abstract class BaseActivity extends AppCompatActivity {
                 })
                 .show();
     }
+
+    protected void doOnErrorResponse(VolleyError error, boolean close) {
+        String messageError = error.getMessage();
+
+        if (error.networkResponse != null)
+            messageError = Messages.fromMessageResponse(new String(error.networkResponse.data));
+
+        showOkDialog(getString(R.string.error), messageError, close);
+    }
+
 }

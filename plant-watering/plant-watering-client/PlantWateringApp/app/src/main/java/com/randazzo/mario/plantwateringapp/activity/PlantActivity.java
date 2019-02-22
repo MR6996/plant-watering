@@ -26,8 +26,6 @@ import java.util.List;
 
 public class PlantActivity extends BaseActivity {
 
-    private PlantActivity ctx;
-
     private FrameLayout loadingFrame;
     private FrameLayout viewFrame;
     private RecyclerView plantsView;
@@ -36,7 +34,6 @@ public class PlantActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant);
-        ctx = this;
 
         loadingFrame = findViewById(R.id.plant_loading_frame);
         viewFrame = findViewById(R.id.plant_view_frame);
@@ -67,7 +64,7 @@ public class PlantActivity extends BaseActivity {
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            ctx.showOkDialog(getString(R.string.error), error.getMessage(), true);
+                            doOnErrorResponse(error, true);
                         }
                     });
         }

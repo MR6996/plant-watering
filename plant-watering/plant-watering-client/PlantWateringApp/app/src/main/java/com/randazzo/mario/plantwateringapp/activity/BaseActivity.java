@@ -8,7 +8,9 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.preference.PreferenceManager;
 
+import com.android.volley.VolleyError;
 import com.randazzo.mario.plantwateringapp.R;
+import com.randazzo.mario.plantwateringapp.util.Messages;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -44,5 +46,14 @@ public abstract class BaseActivity extends AppCompatActivity {
                     }
                 })
                 .show();
+    }
+
+    protected void doOnErrorResponse(VolleyError error, boolean close) {
+        String messageError = error.getMessage();
+
+        if (error.networkResponse != null)
+            messageError = Messages.fromMessageResponse(new String(error.networkResponse.data));
+
+        showOkDialog(getString(R.string.error), messageError, close);
     }
 }

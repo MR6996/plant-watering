@@ -23,7 +23,7 @@ public class MeasureDAO {
 	}
 	
 	public List<Measure> findByPlantId(Long id) {
-		return em.createQuery("Select m From measure m, plant Where m.plant.id = :plantId", Measure.class)
+		return em.createQuery("Select m From measure m Where m.plant.id = :plantId", Measure.class)
 				.setParameter("plantId", id)
 				.getResultList();
 	}

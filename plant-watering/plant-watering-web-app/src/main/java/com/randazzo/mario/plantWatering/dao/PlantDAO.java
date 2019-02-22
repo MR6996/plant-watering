@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import com.randazzo.mario.plantWatering.model.Person;
 import com.randazzo.mario.plantWatering.model.Plant;
 
 @Stateless
@@ -19,7 +20,9 @@ public class PlantDAO implements Serializable {
 	@PersistenceContext
 	EntityManager em;
 
-	public void save(Plant p) {
+	public void save(Plant p, String ownerLoginName) {
+		Person owner = em.find(Person.class, ownerLoginName);
+		p.setPerson(owner);
 		em.persist(p);
 	}
 
@@ -32,12 +35,24 @@ public class PlantDAO implements Serializable {
 		return false;
 	}
 	
-	public Plant findById(Long id) {
-		return em.find(Plant.class, id);
+	public Plant findByIdPersonEmail(Long id, String personEmail) {
+		List<Plant> results = em.createQuery("Select p From plant p Where p.id = :id And p.person.email = :email", Plant.class)
+				 				.setParameter("id", id)
+				 				.setParameter("email", personEmail)
+				 				.getResultList();
+		
+		if(results.size() > 0) return results.get(0);
+		
+		return null;
 	}
 
-	public List<Plant> findAll() {
-		return em.createQuery("from plant p", Plant.class).getResultList();
+	public List<Plant> findByPersonEmail(String personEmail) {
+		List<Plant> results = em.createQuery("Select p From plant p Where p.person.email = :email", Plant.class)
+				 .setParameter("email", personEmail)
+				 .getResultList();
+		
+		System.out.println(results.size());
+		return results;
 	}
 
 }

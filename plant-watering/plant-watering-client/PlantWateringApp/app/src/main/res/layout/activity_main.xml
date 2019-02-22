@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
 
     <TextView
@@ -46,6 +46,16 @@
         android:layout_marginBottom="30dp"
         android:onClick="login"
         android:text="@string/main_login_button" />
+
+    <ProgressBar
+        android:id="@+id/main_login_loading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/main_password"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"
+        android:translationZ="2dp"
+        android:visibility="gone" />
 
 
     <Button

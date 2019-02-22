@@ -2,7 +2,9 @@ package com.randazzo.mario.plantwateringapp.activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -25,6 +27,8 @@ public class RegisterActivity extends BaseActivity {
     private EditText email;
     private EditText password;
     private EditText passwordConfirmation;
+    private Button confirmButton;
+    private ProgressBar confirmLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,8 @@ public class RegisterActivity extends BaseActivity {
         email = findViewById(R.id.register_email);
         password = findViewById(R.id.register_password);
         passwordConfirmation = findViewById(R.id.register_password_confirmation);
+        confirmButton = findViewById(R.id.register_confirm_button);
+        confirmLoading = findViewById(R.id.register_confirm_loading);
     }
 
     public void confirmRegistration(View view) {
@@ -49,6 +55,17 @@ public class RegisterActivity extends BaseActivity {
         registrationDTO.setPasswordConfirmation(passwordConfirmation.getText().toString());
 
         NetworkController.getInstance(this).addToRequestQueue(new RegisterRequest(registrationDTO));
+        setEnabledUI(false);
+        confirmLoading.setVisibility(View.VISIBLE);
+    }
+
+    private void setEnabledUI(boolean enabled) {
+        firstName.setEnabled(enabled);
+        lastName.setEnabled(enabled);
+        email.setEnabled(enabled);
+        password.setEnabled(enabled);
+        passwordConfirmation.setEnabled(enabled);
+        confirmButton.setEnabled(enabled);
     }
 
     class RegisterRequest extends StringRequest {
@@ -69,6 +86,8 @@ public class RegisterActivity extends BaseActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             doOnErrorResponse(error, false);
+                            setEnabledUI(true);
+                            confirmLoading.setVisibility(View.GONE);
                         }
                     }
             );

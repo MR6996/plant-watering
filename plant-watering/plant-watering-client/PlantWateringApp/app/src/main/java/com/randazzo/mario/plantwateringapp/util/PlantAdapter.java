@@ -10,14 +10,15 @@ import android.widget.TextView;
 import com.randazzo.mario.plantWatering.dto.PlantDTO;
 import com.randazzo.mario.plantwateringapp.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantHolder> {
 
-    private List<PlantDTO> plants;
+    private ArrayList<PlantDTO> plants;
 
     public PlantAdapter(List<PlantDTO> plants) {
-        this.plants = plants;
+        this.plants = new ArrayList<>(plants);
     }
 
     @NonNull
@@ -33,6 +34,11 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantHolder>
     public void onBindViewHolder(@NonNull PlantHolder plantHolder, int i) {
         plantHolder.name.setText(plants.get(i).getName());
         plantHolder.description.setText(plants.get(i).getDescription());
+    }
+
+    public void addItem(PlantDTO p) {
+        plants.add(p);
+        notifyDataSetChanged();
     }
 
     @Override

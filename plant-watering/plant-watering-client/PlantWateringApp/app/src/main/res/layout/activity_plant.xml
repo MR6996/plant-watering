@@ -31,10 +31,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/plant_recycler_view"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/plant_add_fab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="20dp"
+                android:onClick="addPlant"
+                android:src="@drawable/ic_add" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/plant_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+
+
     </FrameLayout>
 
 </RelativeLayout>

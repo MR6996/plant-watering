@@ -14,4 +14,6 @@
     <string name="preferences_debug_server_ip_key">preference_debug_server_ip</string>
     <string name="error">Error</string>
     <string name="loding_data_message">Loading data…</string>
+    <string name="plant_add_hint_name">Plant name</string>
+    <string name="plant_add_hint_descsription">Plant descsription</string>
 </resources>

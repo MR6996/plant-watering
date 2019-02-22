@@ -2,7 +2,7 @@
 package com.randazzo.mario.plantWatering.security.service;
 
 import javax.inject.Inject;
-import javax.ws.rs.POST;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
 import org.picketlink.Identity;
@@ -18,19 +18,19 @@ import com.randazzo.mario.plantWatering.security.authentication.JWSToken;
 @Path("/private/logout")
 public class LogoutService {
 
-    @Inject
-    private Token.Provider<JWSToken> tokenProvider;
+	@Inject
+	private Token.Provider<JWSToken> tokenProvider;
 
-    @Inject
-    private Identity identity;
+	@Inject
+	private Identity identity;
 
-    @POST
-    @LoggedIn
-    public void logout() {
-        Account account = this.identity.getAccount();
+	@GET
+	@LoggedIn
+	public void logout() {
+		Account account = this.identity.getAccount();
 
-        this.tokenProvider.invalidate(account);
+		this.tokenProvider.invalidate(account);
 
-        this.identity.logout();
-    }
+		this.identity.logout();
+	}
 }

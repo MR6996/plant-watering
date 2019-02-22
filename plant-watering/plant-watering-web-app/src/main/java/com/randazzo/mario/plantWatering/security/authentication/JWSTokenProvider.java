@@ -39,6 +39,7 @@ public class JWSTokenProvider implements Token.Provider<JWSToken> {
 				.notBefore(getCurrentTime());
 
 			token = new JWSToken(builder.build().encode());
+			getIdentityManager().updateCredential(account, token);
 		} else {
 			token = new JWSToken(tokenStorage.getToken());
 		}

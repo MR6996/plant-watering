@@ -12,7 +12,6 @@ import javax.ws.rs.core.Response.ResponseBuilder;
 public class MessageBuilder {
 
     public static final String MESSAGE_PARAMETER = "message";
-    public static final String ACTIVATION_CODE_PARAMETER = "activationCode";
     public static final String TOKEN_PARAMETER = "token";
 
     private final ResponseBuilder response;

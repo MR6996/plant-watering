@@ -5,7 +5,9 @@ import javax.enterprise.event.Observes;
 
 import org.picketlink.config.SecurityConfigurationBuilder;
 import org.picketlink.event.SecurityConfigurationEvent;
+import org.picketlink.idm.credential.handler.TokenCredentialHandler;
 
+import com.randazzo.mario.plantWatering.security.authentication.JWSTokenProvider;
 import com.randazzo.mario.plantWatering.security.model.User;
 
 
@@ -21,7 +23,6 @@ public class IdentityManagementConfiguration {
         		.named("default.config")
         			.stores()
         				.jpa()
-        					.supportCredentials(true)
         					.supportType(User.class)
         					.supportAllFeatures();
     }

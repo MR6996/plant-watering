@@ -25,6 +25,7 @@ public class PlantConverter implements Converter<Plant, PlantDTO> {
 		if(entity == null) return null;
 		
 		PlantDTO dto = new PlantDTO();
+		dto.setId(entity.getId());
 		dto.setName(entity.getName());
 		dto.setDescription(entity.getDescription());
 		dto.setPerson(personConverter.entityToDto(entity.getPerson()));
@@ -36,6 +37,7 @@ public class PlantConverter implements Converter<Plant, PlantDTO> {
 		if(dto == null) return null;
 		
 		Plant entity = new Plant();
+		entity.setId(dto.getId());
 		entity.setName(dto.getName());
 		entity.setDescription(dto.getDescription());
 		entity.setPerson(personConverter.dtoToEntity(dto.getPerson()));

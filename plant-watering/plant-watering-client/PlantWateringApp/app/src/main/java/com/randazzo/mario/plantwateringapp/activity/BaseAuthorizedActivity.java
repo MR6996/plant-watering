@@ -40,19 +40,21 @@ public abstract class BaseAuthorizedActivity extends BaseActivity {
 
         LogOutRequest() {
             super(
-                    Method.POST,
+                    Method.GET,
                     urlServer + "private/logout",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             Session.getInstance().clear();
+                            setResult(MainActivity.LOGOUT_RESULT_OK_CODE);
                             ((Activity) ctx).finish();
                         }
                     },
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            doOnErrorResponse(error, false);
+                            setResult(MainActivity.LOGOUT_RESULT_FAIL_CODE);
+                            doOnErrorResponse(error, true);
                         }
                     }
             );

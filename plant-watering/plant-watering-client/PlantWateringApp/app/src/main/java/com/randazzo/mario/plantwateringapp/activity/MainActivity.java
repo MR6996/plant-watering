@@ -2,12 +2,14 @@ package com.randazzo.mario.plantwateringapp.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -23,6 +25,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends BaseActivity {
+
+    public static final int LOGOUT_REQUEST_CODE = 1;
+    public static final int LOGOUT_RESULT_OK_CODE = 1;
+    public static final int LOGOUT_RESULT_FAIL_CODE = 2;
 
     private EditText username;
     private EditText password;
@@ -46,6 +52,19 @@ public class MainActivity extends BaseActivity {
         this.settingsButton = findViewById(R.id.main_settings_button);
 
         this.loginLoading = findViewById(R.id.main_login_loading);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == LOGOUT_REQUEST_CODE) {
+            if (resultCode == LOGOUT_RESULT_OK_CODE)
+                Toast.makeText(this, "Logout successfully!", Toast.LENGTH_LONG).show();
+            else if (resultCode == LOGOUT_RESULT_FAIL_CODE)
+                Toast.makeText(this, "Error on performing logout!", Toast.LENGTH_LONG).show();
+
+            setEnableUI(true);
+            loginLoading.setVisibility(View.GONE);
+        }
     }
 
     public void login(View view) {
@@ -72,6 +91,7 @@ public class MainActivity extends BaseActivity {
         settingsButton.setEnabled(enabled);
     }
 
+
     class LoginRequest extends JsonObjectRequest {
 
         private String username;
@@ -87,7 +107,7 @@ public class MainActivity extends BaseActivity {
                         public void onResponse(JSONObject response) {
                             try {
                                 Session.getInstance().setSessionToken(response.getString("authctoken"));
-                                startActivity(new Intent(ctx, PlantActivity.class));
+                                startActivityForResult(new Intent(ctx, PlantActivity.class), LOGOUT_REQUEST_CODE);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

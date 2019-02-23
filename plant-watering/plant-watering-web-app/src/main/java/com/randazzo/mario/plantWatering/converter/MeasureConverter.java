@@ -19,32 +19,35 @@ public class MeasureConverter implements Converter<Measure, MeasureDTO> {
 	@Inject 
 	@PlantType
 	private Converter<Plant, PlantDTO> plantConverter;
-	
+
 	@Override
 	public MeasureDTO entityToDto(Measure entity) {
-		if(entity == null) return null;
-		
+		if (entity == null)
+			return null;
+
 		MeasureDTO dto = new MeasureDTO();
 		dto.setExternalHumidity(entity.getExternalHumidity());
 		dto.setExternalTemperature(entity.getExternalTemperature());
 		dto.setInternalHumidity(entity.getInternalHumidity());
 		dto.setInternalTemperature(entity.getInternalTemperature());
+		dto.setDate(entity.getDate());
 		dto.setPlant(plantConverter.entityToDto(entity.getPlant()));
 		return dto;
 	}
 
 	@Override
 	public Measure dtoToEntity(MeasureDTO dto) {
-		if(dto == null) return null;
-		
+		if (dto == null)
+			return null;
+
 		Measure entity = new Measure();
 		entity.setExternalHumidity(dto.getExternalHumidity());
 		entity.setExternalTemperature(dto.getExternalTemperature());
 		entity.setInternalHumidity(dto.getInternalHumidity());
 		entity.setInternalTemperature(dto.getInternalTemperature());
+		entity.setDate(dto.getDate());
 		entity.setPlant(plantConverter.dtoToEntity(dto.getPlant()));
 		return entity;
 	}
-
 
 }

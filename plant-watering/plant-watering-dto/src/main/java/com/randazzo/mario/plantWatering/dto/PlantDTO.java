@@ -10,7 +10,7 @@ public class PlantDTO implements Serializable {
 	private String name;
 	private String description;
 	private PersonDTO person;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -41,43 +41,6 @@ public class PlantDTO implements Serializable {
 
 	public void setPerson(PersonDTO person) {
 		this.person = person;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((person == null) ? 0 : person.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		PlantDTO other = (PlantDTO) obj;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (person == null) {
-			if (other.person != null)
-				return false;
-		} else if (!person.equals(other.person))
-			return false;
-		return true;
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.randazzo.mario.plantWatering.model;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ public class Measure implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long id;
 
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn
 	private Plant plant;
 
@@ -35,6 +36,9 @@ public class Measure implements Serializable {
 
 	@Column(nullable = false, precision = 2)
 	private float internalHumidity;
+
+	@Column(nullable = false)
+	private Date date;
 
 	public long getId() {
 		return id;
@@ -82,6 +86,14 @@ public class Measure implements Serializable {
 
 	public void setInternalHumidity(float internallHumidity) {
 		this.internalHumidity = internallHumidity;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	@Override

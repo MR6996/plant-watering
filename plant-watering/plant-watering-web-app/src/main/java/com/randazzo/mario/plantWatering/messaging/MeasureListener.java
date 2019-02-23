@@ -9,7 +9,10 @@ import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
 import com.google.gson.Gson;
+import com.randazzo.mario.plantWatering.converter.Converter;
+import com.randazzo.mario.plantWatering.converter.annotation.MeasureType;
 import com.randazzo.mario.plantWatering.dao.MeasureDAO;
+import com.randazzo.mario.plantWatering.dto.MeasureDTO;
 import com.randazzo.mario.plantWatering.model.Measure;
 
 @MessageDriven(activationConfig = {
@@ -21,6 +24,10 @@ public class MeasureListener implements MessageListener {
 
 	@Inject
 	MeasureDAO measureDAO;
+	
+	@Inject
+	@MeasureType
+	Converter<Measure, MeasureDTO> measureConverter;
 
 	@Override
 	public void onMessage(Message measure) {
@@ -30,8 +37,8 @@ public class MeasureListener implements MessageListener {
 				TextMessage msg = (TextMessage) measure;
 				System.out.println(msg.getText());
 
-				Measure m = gson.fromJson(msg.getText(), Measure.class);
-				measureDAO.save(m);
+				MeasureDTO m = gson.fromJson(msg.getText(), MeasureDTO.class);
+				measureDAO.save(measureConverter.dtoToEntity(m));
 			}
 		} catch (JMSException e) {
 			e.printStackTrace();

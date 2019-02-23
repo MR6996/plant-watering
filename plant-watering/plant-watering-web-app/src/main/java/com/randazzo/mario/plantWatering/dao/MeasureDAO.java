@@ -15,11 +15,7 @@ public class MeasureDAO {
 	EntityManager em;
 
 	public void save(Measure m) {
-		Measure newM = new Measure();
-		newM.setPlant(m.getPlant());
-		newM.setExternalHumidity(m.getExternalHumidity());
-		newM.setExternalTemperature(m.getExternalTemperature());
-		em.persist(newM);
+		em.persist(m);
 	}
 	
 	public List<Measure> findByPlantId(Long id) {

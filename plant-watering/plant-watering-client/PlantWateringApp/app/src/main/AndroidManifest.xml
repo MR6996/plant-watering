@@ -36,6 +36,11 @@
             android:name=".activity.PlantActivity"
             android:label="My plants"
             android:parentActivityName=".activity.MainActivity" />
+        <activity
+            android:name=".activity.PlotsActivity"
+            android:label="@string/title_activity_plots"
+            android:parentActivityName=".activity.PlantActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

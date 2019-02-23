@@ -52,7 +52,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .show();
     }
 
-    protected void doOnErrorResponse(VolleyError error, boolean close) {
+    public void doOnErrorResponse(VolleyError error, boolean close) {
         String messageError = error.getMessage();
 
         if (error.networkResponse != null)

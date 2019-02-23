@@ -16,4 +16,8 @@
     <string name="loding_data_message">Loading data…</string>
     <string name="plant_add_hint_name">Plant name</string>
     <string name="plant_add_hint_descsription">Plant descsription</string>
+
+    <string name="plant_show_plot_button">Show plot</string>
+    <string name="plant_watering_button">Watering</string>
+    <string name="title_activity_plots">PlotsActivity</string>
 </resources>

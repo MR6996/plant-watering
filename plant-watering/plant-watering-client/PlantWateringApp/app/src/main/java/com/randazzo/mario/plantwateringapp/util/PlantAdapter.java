@@ -16,6 +16,7 @@ import java.util.List;
 public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantHolder> {
 
     private ArrayList<PlantDTO> plants;
+    private onItemClickListener itemClickListener;
 
     public PlantAdapter(List<PlantDTO> plants) {
         this.plants = new ArrayList<>(plants);
@@ -26,8 +27,8 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantHolder>
     public PlantHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
-        View contactView = inflater.inflate(R.layout.item_layout_plant, parent, false);
-        return new PlantHolder(contactView);
+        View plantView = inflater.inflate(R.layout.item_layout_plant, parent, false);
+        return new PlantHolder(plantView);
     }
 
     @Override
@@ -46,6 +47,19 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantHolder>
         return plants.size();
     }
 
+    public onItemClickListener getItemClickListener() {
+        return itemClickListener;
+    }
+
+    public void setItemClickListener(onItemClickListener mItemClickListener) {
+        this.itemClickListener = mItemClickListener;
+    }
+
+
+    public interface onItemClickListener {
+        void onItemClick(View view, int position, PlantDTO plant);
+    }
+
     class PlantHolder extends RecyclerView.ViewHolder {
 
         private TextView name;
@@ -55,6 +69,16 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantHolder>
             super(itemView);
             name = itemView.findViewById(R.id.plant_item_name);
             description = itemView.findViewById(R.id.plant_item_description);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (itemClickListener != null) {
+                        int i = getAdapterPosition();
+                        itemClickListener.onItemClick(view, i, plants.get(i));
+                    }
+                }
+            });
         }
     }
 }

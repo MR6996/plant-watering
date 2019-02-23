@@ -25,19 +25,28 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle" />
 
         <Button
-            android:id="@+id/plant_plot_button"
+            android:id="@+id/plant_temp_plot_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/plant_description"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            android:text="@string/plant_show_plot_button" />
+            android:text="@string/plant_show_temp_plot_button" />
+
+        <Button
+            android:id="@+id/plant_hum_plot_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/plant_temp_plot_button"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/plant_show_hum_plot_button" />
 
         <Button
             android:id="@+id/plant_watering_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/plant_plot_button"
+            android:layout_below="@id/plant_hum_plot_button"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
             android:text="@string/plant_watering_button" />

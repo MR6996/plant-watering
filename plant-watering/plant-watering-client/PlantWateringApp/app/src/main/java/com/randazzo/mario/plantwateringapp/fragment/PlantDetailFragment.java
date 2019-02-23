@@ -12,7 +12,8 @@ import android.widget.TextView;
 
 import com.randazzo.mario.plantWatering.dto.PlantDTO;
 import com.randazzo.mario.plantwateringapp.R;
-import com.randazzo.mario.plantwateringapp.activity.PlotsActivity;
+import com.randazzo.mario.plantwateringapp.activity.HumidityPlotActivity;
+import com.randazzo.mario.plantwateringapp.activity.TemperaturePlotActivity;
 
 import java.util.Objects;
 
@@ -24,7 +25,8 @@ public class PlantDetailFragment extends Fragment {
     private PlantDTO plant;
     private TextView plantName;
     private TextView descriptionName;
-    private Button plotButton;
+    private Button tempPlotButton;
+    private Button humPlotButton;
 
     public PlantDetailFragment() {
     }
@@ -50,11 +52,21 @@ public class PlantDetailFragment extends Fragment {
         descriptionName = rootView.findViewById(R.id.plant_description);
         descriptionName.setText(plant.getDescription());
 
-        plotButton = rootView.findViewById(R.id.plant_plot_button);
-        plotButton.setOnClickListener(new View.OnClickListener() {
+        tempPlotButton = rootView.findViewById(R.id.plant_temp_plot_button);
+        tempPlotButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent plotIntent = new Intent(getContext(), PlotsActivity.class);
+                Intent plotIntent = new Intent(getContext(), TemperaturePlotActivity.class);
+                plotIntent.putExtra(PLANT_ID_KEY, plant.getId());
+                Objects.requireNonNull(getActivity()).startActivity(plotIntent);
+            }
+        });
+
+        humPlotButton = rootView.findViewById(R.id.plant_hum_plot_button);
+        humPlotButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent plotIntent = new Intent(getContext(), HumidityPlotActivity.class);
                 plotIntent.putExtra(PLANT_ID_KEY, plant.getId());
                 Objects.requireNonNull(getActivity()).startActivity(plotIntent);
             }

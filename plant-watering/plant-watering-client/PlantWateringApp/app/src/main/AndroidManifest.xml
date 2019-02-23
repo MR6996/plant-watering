@@ -16,7 +16,7 @@
         <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/MainActivityTheme">
+            android:theme="@style/AppNoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,12 +35,16 @@
         <activity
             android:name=".activity.PlantActivity"
             android:label="My plants"
-            android:parentActivityName=".activity.MainActivity" />
+            android:parentActivityName=".activity.MainActivity"
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.PlotsActivity"
-            android:label="@string/title_activity_plots"
+            android:name=".activity.TemperaturePlotActivity"
             android:parentActivityName=".activity.PlantActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppNoActionBarTheme" />
+        <activity
+            android:name=".activity.HumidityPlotActivity"
+            android:parentActivityName=".activity.PlantActivity"
+            android:theme="@style/AppNoActionBarTheme" />
     </application>
 
 </manifest>

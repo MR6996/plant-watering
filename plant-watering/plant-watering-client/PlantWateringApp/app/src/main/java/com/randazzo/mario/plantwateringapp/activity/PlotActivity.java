@@ -33,12 +33,12 @@ import com.randazzo.mario.plantwateringapp.util.Session;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
-import java.sql.Date;
 import java.text.FieldPosition;
 import java.text.Format;
 import java.text.ParsePosition;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -76,6 +76,11 @@ public abstract class PlotActivity extends BaseAuthorizedActivity {
     protected abstract void setPlotProperties();
 
     private void plotMeasures(List<MeasureDTO> measures) {
+        if (measures.size() < 3) {
+            showOkDialog(getString(R.string.error), "No enough data!", true);
+            return;
+        }
+
         setListNumbers(measures);
 
         XYSeries internalSeries = new SimpleXYSeries(

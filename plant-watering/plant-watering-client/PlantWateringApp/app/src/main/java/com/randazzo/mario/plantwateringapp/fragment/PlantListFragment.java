@@ -198,7 +198,9 @@ public class PlantListFragment extends Fragment {
                         @Override
                         public void onResponse(String response) {
                             Toast.makeText(getContext(), Messages.fromMessageResponse(response), Toast.LENGTH_LONG).show();
-                            plantAdapter.addItem(plant);
+                            loadingFrame.setVisibility(View.VISIBLE);
+                            viewFrame.setVisibility(View.GONE);
+                            NetworkController.getInstance(getContext()).addToRequestQueue(new AllPlantRequest());
                         }
                     },
                     new Response.ErrorListener() {

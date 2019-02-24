@@ -1,13 +1,15 @@
 package com.randazzo.mario.plantWatering.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity(name = "measure")
 public class Measure implements Serializable {
@@ -31,6 +33,7 @@ public class Measure implements Serializable {
 	private float internalHumidity;
 
 	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 
 	public long getId() {

@@ -1,5 +1,9 @@
 package com.randazzo.mario.plantWatering.messaging;
 
+import java.lang.reflect.Type;
+import java.util.Date;
+
+import javax.annotation.PostConstruct;
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.inject.Inject;
@@ -9,6 +13,11 @@ import javax.jms.MessageListener;
 import javax.jms.TextMessage;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 import com.randazzo.mario.plantWatering.converter.Converter;
 import com.randazzo.mario.plantWatering.converter.annotation.MeasureType;
 import com.randazzo.mario.plantWatering.dao.MeasureDAO;
@@ -16,19 +25,33 @@ import com.randazzo.mario.plantWatering.dto.MeasureDTO;
 import com.randazzo.mario.plantWatering.model.Measure;
 
 @MessageDriven(activationConfig = {
-		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
-		@ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/pl"), })
+		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic"),
+		@ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/pl/measureTopic"), })
 public class MeasureListener implements MessageListener {
 
-	Gson gson = new Gson();
+	private Gson gson;
 
 	@Inject
-	MeasureDAO measureDAO;
+	private MeasureDAO measureDAO;
 	
 	@Inject
 	@MeasureType
-	Converter<Measure, MeasureDTO> measureConverter;
+	private Converter<Measure, MeasureDTO> measureConverter;
 
+	@PostConstruct
+	private void init() {
+		gson = new GsonBuilder()
+				.registerTypeAdapter(Date.class, new JsonDeserializer<Date>() {
+
+					@Override
+					public Date deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+							throws JsonParseException {
+						return json == null ? null : new Date(json.getAsLong());
+					}
+				})
+				.create();
+	}
+	
 	@Override
 	public void onMessage(Message measure) {
 

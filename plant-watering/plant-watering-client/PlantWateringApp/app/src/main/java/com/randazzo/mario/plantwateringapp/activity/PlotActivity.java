@@ -1,6 +1,7 @@
 package com.randazzo.mario.plantwateringapp.activity;
 
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -14,6 +15,7 @@ import com.android.volley.toolbox.JsonRequest;
 import com.androidplot.xy.CatmullRomInterpolator;
 import com.androidplot.xy.LineAndPointFormatter;
 import com.androidplot.xy.SimpleXYSeries;
+import com.androidplot.xy.XYGraphWidget;
 import com.androidplot.xy.XYPlot;
 import com.androidplot.xy.XYSeries;
 import com.google.gson.Gson;
@@ -32,6 +34,9 @@ import com.randazzo.mario.plantwateringapp.util.Session;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.sql.Date;
+import java.text.FieldPosition;
+import java.text.Format;
+import java.text.ParsePosition;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -43,6 +48,8 @@ public abstract class PlotActivity extends BaseAuthorizedActivity {
     protected XYPlot plot;
     protected List<Number> internal = new ArrayList<>();
     protected List<Number> external = new ArrayList<>();
+    protected List<Date> domainLabels = new ArrayList<>();
+
     private Long plantId;
     private FrameLayout loadingFrame;
     private FrameLayout plotFrame;
@@ -89,6 +96,19 @@ public abstract class PlotActivity extends BaseAuthorizedActivity {
 
         plot.addSeries(internalSeries, internalSeriesFormat);
         plot.addSeries(externalSeries, externalSeriesFormat);
+
+        plot.getGraph().getLineLabelStyle(XYGraphWidget.Edge.BOTTOM).setFormat(new Format() {
+            @Override
+            public StringBuffer format(Object obj, StringBuffer toAppendTo, FieldPosition pos) {
+                int i = Math.round(((Number) obj).floatValue());
+                return toAppendTo.append(DateFormat.getDateFormat(getApplicationContext()).format(domainLabels.get(i)));
+            }
+
+            @Override
+            public Object parseObject(String source, ParsePosition pos) {
+                return null;
+            }
+        });
 
         setPlotProperties();
     }

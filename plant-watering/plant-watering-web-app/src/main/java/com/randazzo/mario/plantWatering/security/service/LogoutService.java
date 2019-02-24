@@ -1,6 +1,7 @@
 
 package com.randazzo.mario.plantWatering.security.service;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -16,6 +17,7 @@ import com.randazzo.mario.plantWatering.security.authentication.JWSToken;
  *
  */
 @Path("/private/logout")
+@Stateless
 public class LogoutService {
 
 	@Inject

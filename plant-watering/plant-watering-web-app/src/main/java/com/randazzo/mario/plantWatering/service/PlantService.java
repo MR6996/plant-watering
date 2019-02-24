@@ -1,6 +1,5 @@
 package com.randazzo.mario.plantWatering.service;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,9 +26,7 @@ import com.randazzo.mario.plantWatering.utils.MessageBuilder;
 
 @Path("/private/plant")
 @Stateless
-public class PlantService implements Serializable {
-
-	private static final long serialVersionUID = -3785858585362912224L;
+public class PlantService {
 
 	@Inject
 	private PlantDAO plantDAO;

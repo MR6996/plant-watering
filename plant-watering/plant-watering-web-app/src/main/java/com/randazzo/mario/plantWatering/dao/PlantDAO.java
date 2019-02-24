@@ -1,9 +1,7 @@
 package com.randazzo.mario.plantWatering.dao;
 
-import java.io.Serializable;
 import java.util.List;
 
-import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,10 +10,7 @@ import com.randazzo.mario.plantWatering.model.Person;
 import com.randazzo.mario.plantWatering.model.Plant;
 
 @Stateless
-@Remote
-public class PlantDAO implements Serializable {
-
-	private static final long serialVersionUID = 7658496890054544163L;
+public class PlantDAO {
 
 	@PersistenceContext
 	EntityManager em;

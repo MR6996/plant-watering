@@ -17,6 +17,8 @@ import com.randazzo.mario.plantWatering.model.Person;
 @IdentityStereotype(USER)
 public class User extends AbstractIdentityType implements Account {
 
+	private static final long serialVersionUID = 128682778283610669L;
+
 	public static final AttributeParameter ACTIVATION_CODE = QUERY_ATTRIBUTE.byName("activationCode");
 
 	public static final QueryParameter USER_NAME = QUERY_ATTRIBUTE.byName("loginName");

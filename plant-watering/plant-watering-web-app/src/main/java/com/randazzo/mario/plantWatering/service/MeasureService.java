@@ -1,6 +1,5 @@
 package com.randazzo.mario.plantWatering.service;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,9 +24,7 @@ import com.randazzo.mario.plantWatering.security.model.User;
 
 @Path("/private/measure")
 @Stateless
-public class MeasureService implements Serializable {
-
-	private static final long serialVersionUID = 4533445215440237939L;
+public class MeasureService {
 
 	@Inject
 	private MeasureDAO measureDao;

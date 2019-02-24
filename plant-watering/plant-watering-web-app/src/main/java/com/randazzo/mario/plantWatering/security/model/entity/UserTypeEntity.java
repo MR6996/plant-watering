@@ -15,6 +15,8 @@ import com.randazzo.mario.plantWatering.security.model.User;
 @IdentityManaged(User.class)
 public class UserTypeEntity extends IdentityTypeEntity {
 
+	private static final long serialVersionUID = -2880911865425443349L;
+
 	@AttributeValue
 	private String loginName;
 	

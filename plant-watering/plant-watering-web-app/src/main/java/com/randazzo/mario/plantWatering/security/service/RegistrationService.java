@@ -23,8 +23,8 @@ import com.randazzo.mario.plantWatering.security.model.UserRegistration;
 import com.randazzo.mario.plantWatering.utils.MessageBuilder;
 
 
-@Stateless
 @Path("/register")
+@Stateless
 public class RegistrationService implements Serializable {
 
 	private static final long serialVersionUID = 1741800718124694491L;

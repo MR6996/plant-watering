@@ -16,19 +16,16 @@ import org.picketlink.Identity;
 
 import com.randazzo.mario.plantWatering.converter.Converter;
 import com.randazzo.mario.plantWatering.converter.annotation.MeasureType;
-import com.randazzo.mario.plantWatering.dao.MeasureDAO;
 import com.randazzo.mario.plantWatering.dao.PlantDAO;
 import com.randazzo.mario.plantWatering.dto.MeasureDTO;
 import com.randazzo.mario.plantWatering.model.Measure;
+import com.randazzo.mario.plantWatering.model.Plant;
 import com.randazzo.mario.plantWatering.security.model.User;
 
 @Path("/private/measure")
 @Stateless
 public class MeasureService {
 
-	@Inject
-	private MeasureDAO measureDao;
-	
 	@Inject
 	private PlantDAO plantDao;
 	
@@ -44,9 +41,10 @@ public class MeasureService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<MeasureDTO> allPlantMeasures(@PathParam("plantId") Long plantId) {
 		User loggedUser = (User) identity.getAccount();
+		Plant plant = plantDao.findByIdPersonEmail(plantId, loggedUser.getLoginName());
 		
-		if(plantDao.findByIdPersonEmail(plantId, loggedUser.getLoginName())!= null)
-			return measureDao.findByPlantId(plantId).stream()
+		if(plant != null)
+			return plant.getMeasures().stream()
 					.map(p->{return measureConverter.entityToDto(p);})
 					.collect(Collectors.toList());
 		else

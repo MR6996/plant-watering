@@ -1,7 +1,9 @@
 package com.randazzo.mario.plantWatering.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -9,21 +11,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity(name = "plant")
 public class Plant implements Serializable {
 
 	private static final long serialVersionUID = -2130164883880126879L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	private String name;
 	private String description;
 
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn
 	private Person person;
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "plant_id")
+	private List<Measure> measures;
 
 	public Long getId() {
 		return id;
@@ -55,6 +62,14 @@ public class Plant implements Serializable {
 
 	public void setPerson(Person person) {
 		this.person = person;
+	}
+
+	public List<Measure> getMeasures() {
+		return measures;
+	}
+
+	public void setMeasures(List<Measure> measures) {
+		this.measures = measures;
 	}
 
 	@Override

@@ -47,8 +47,10 @@ public class PlantService {
 
 		try {
 			User loggedUser = (User) identity.getAccount();
+			Plant newPlant = plantConverter.dtoToEntity(request);
+			newPlant.setPerson(loggedUser.getPerson());
 			
-			plantDAO.save(plantConverter.dtoToEntity(request), loggedUser.getLoginName());
+			plantDAO.save(newPlant);
 			message = MessageBuilder.ok().message("Saved successfully!");
 		} catch (Exception e) {
 			message = MessageBuilder.badRequest().message(e.getCause() + ": " + e.getMessage());
@@ -66,9 +68,11 @@ public class PlantService {
 		
 		try {
 			User loggedUser = (User) identity.getAccount();
+			Plant plant = plantConverter.dtoToEntity(request);
 			
-			if(request.getPerson().getEmail().equals(loggedUser.getLoginName())) {
-				plantDAO.update(plantConverter.dtoToEntity(request));
+			if(plantDAO.findByIdPersonEmail(plant.getId(), loggedUser.getLoginName()) != null) {
+				plant.setPerson(loggedUser.getPerson());
+				plantDAO.update(plant);
 				message = MessageBuilder.ok().message("Updated successfully!");
 			}
 			else 
@@ -99,5 +103,7 @@ public class PlantService {
 				.map(p->{return plantConverter.entityToDto(p);})
 				.collect(Collectors.toList());
 	}
+	
+
 	
 }

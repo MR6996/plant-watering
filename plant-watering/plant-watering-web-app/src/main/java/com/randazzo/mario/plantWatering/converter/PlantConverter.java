@@ -28,7 +28,6 @@ public class PlantConverter implements Converter<Plant, PlantDTO> {
 		dto.setId(entity.getId());
 		dto.setName(entity.getName());
 		dto.setDescription(entity.getDescription());
-		dto.setPerson(personConverter.entityToDto(entity.getPerson()));
 		return dto;
 	}
 
@@ -40,7 +39,6 @@ public class PlantConverter implements Converter<Plant, PlantDTO> {
 		entity.setId(dto.getId());
 		entity.setName(dto.getName());
 		entity.setDescription(dto.getDescription());
-		entity.setPerson(personConverter.dtoToEntity(dto.getPerson()));
 		return entity;
 	}
 

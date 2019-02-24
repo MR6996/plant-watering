@@ -7,20 +7,11 @@ public class MeasureDTO implements Serializable {
 
 	private static final long serialVersionUID = -2342075750185903700L;
 
-	private PlantDTO plant;
 	private float externalTemperature;
 	private float externalHumidity;
 	private float internalTemperature;
 	private float internalHumidity;
 	private Date date;
-
-	public PlantDTO getPlant() {
-		return plant;
-	}
-
-	public void setPlant(PlantDTO plant) {
-		this.plant = plant;
-	}
 
 	public float getExternalTemperature() {
 		return externalTemperature;

@@ -9,7 +9,6 @@ public class PlantDTO implements Serializable {
 	private Long id;
 	private String name;
 	private String description;
-	private PersonDTO person;
 
 	public Long getId() {
 		return id;
@@ -33,14 +32,6 @@ public class PlantDTO implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public PersonDTO getPerson() {
-		return person;
-	}
-
-	public void setPerson(PersonDTO person) {
-		this.person = person;
 	}
 
 }

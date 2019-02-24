@@ -6,7 +6,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.randazzo.mario.plantWatering.model.Person;
 import com.randazzo.mario.plantWatering.model.Plant;
 
 @Stateless
@@ -15,19 +14,12 @@ public class PlantDAO {
 	@PersistenceContext
 	EntityManager em;
 
-	public void save(Plant p, String ownerLoginName) {
-		Person owner = em.find(Person.class, ownerLoginName);
-		p.setPerson(owner);
+	public void save(Plant p) {
 		em.persist(p);
 	}
 
-	public boolean update(Plant p) {
-		if(em.find(Plant.class, p.getId()) != null) {
-			em.merge(p);
-			return true;
-		}
-		
-		return false;
+	public void update(Plant p) {
+		em.merge(p);	
 	}
 	
 	public Plant findByIdPersonEmail(Long id, String personEmail) {
@@ -42,12 +34,10 @@ public class PlantDAO {
 	}
 
 	public List<Plant> findByPersonEmail(String personEmail) {
-		List<Plant> results = em.createQuery("Select p From plant p Where p.person.email = :email", Plant.class)
+		return  em.createQuery("Select p From plant p Where p.person.email = :email", Plant.class)
 				 .setParameter("email", personEmail)
 				 .getResultList();
 		
-		System.out.println(results.size());
-		return results;
 	}
 
 }

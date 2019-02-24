@@ -14,6 +14,12 @@ import javax.persistence.criteria.Root;
 import com.randazzo.mario.plantWatering.model.Person;
 import com.randazzo.mario.plantWatering.model.Plant;
 
+/**
+ * DAO for {@link Plant} data type.
+ * 
+ * @author Mario Randazzo
+ *
+ */
 @Stateless
 public class PlantDAO {
 

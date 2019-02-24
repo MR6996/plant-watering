@@ -1,6 +1,13 @@
-
 package com.randazzo.mario.plantWatering.security.model;
 
+import com.randazzo.mario.plantWatering.security.service.RegistrationService;
+
+/**
+ * This bean provides the information in {@link RegistrationService} for create a new user.
+ * 
+ * @author Mario Randazzo
+ *
+ */
 public class UserRegistration {
 
     private String firstName;

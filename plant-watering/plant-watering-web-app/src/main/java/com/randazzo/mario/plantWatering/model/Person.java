@@ -3,6 +3,16 @@ package com.randazzo.mario.plantWatering.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.randazzo.mario.plantWatering.security.model.User;
+
+/**
+ * Represents a user in the application. This entity is linked with 
+ * {@link User} entity, for link the application data model with Identity 
+ * model of Picketlink.
+ * 
+ * @author Mario Randazzo
+ *
+ */
 @Entity(name = "person")
 public class Person {
 

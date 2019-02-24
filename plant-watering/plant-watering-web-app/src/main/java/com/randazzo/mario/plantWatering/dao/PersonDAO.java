@@ -6,6 +6,12 @@ import javax.persistence.PersistenceContext;
 
 import com.randazzo.mario.plantWatering.model.Person;
 
+/**
+ * DAO for {@link Person} data type.
+ * 
+ * @author Mario Randazzo
+ *
+ */
 @Stateless
 public class PersonDAO {
 

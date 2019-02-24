@@ -6,6 +6,14 @@ import com.randazzo.mario.plantWatering.converter.annotation.UserRegistrationTyp
 import com.randazzo.mario.plantWatering.dto.security.UserRegistrationDTO;
 import com.randazzo.mario.plantWatering.security.model.UserRegistration;
 
+/**
+ * Implementation of a {@link Converter} for {@link UserRegistration} data type.
+ * 
+ * @author Mario Randazzo
+ *
+ * @see UserRegistrationType
+ *
+ */
 @Stateless
 @UserRegistrationType
 public class UserRegistrationConverter implements Converter<UserRegistration, UserRegistrationDTO> {

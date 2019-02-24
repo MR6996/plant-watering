@@ -13,6 +13,13 @@ import org.picketlink.idm.model.Account;
 import org.picketlink.idm.model.basic.Realm;
 import org.picketlink.json.jose.JWSBuilder;
 
+/**
+ * This is a {@link org.picketlink.idm.credential.Token.Provider} that manages
+ *  {@link JWSToken} type..</p>
+ * 
+ * @author Mario Randazzo
+ *
+ */
 @Stateless
 public class JWSTokenProvider implements Token.Provider<JWSToken> {
 

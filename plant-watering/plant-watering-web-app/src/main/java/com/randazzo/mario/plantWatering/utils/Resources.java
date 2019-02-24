@@ -7,6 +7,12 @@ import javax.persistence.PersistenceContext;
 
 import org.picketlink.annotations.PicketLink;
 
+/**
+ * CDI bean to produces application resources to CDI beans.
+ * 
+ * @author Mario Randazzo
+ *
+ */
 @ApplicationScoped
 public class Resources {
 

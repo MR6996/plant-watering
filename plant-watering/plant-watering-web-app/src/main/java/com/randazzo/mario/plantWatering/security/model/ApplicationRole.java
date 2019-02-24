@@ -1,9 +1,9 @@
 package com.randazzo.mario.plantWatering.security.model;
 
 /**
- * <p>Roles supported by this application.</p>
+ * Roles supported by this application.
  *
- * @author pedroigor
+ * @author Mario Randazzo
  */
 public interface ApplicationRole {
 

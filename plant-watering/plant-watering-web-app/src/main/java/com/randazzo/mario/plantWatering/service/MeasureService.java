@@ -22,6 +22,12 @@ import com.randazzo.mario.plantWatering.model.Measure;
 import com.randazzo.mario.plantWatering.model.Plant;
 import com.randazzo.mario.plantWatering.security.model.User;
 
+/**
+ * RESTFul endpoint responsible for handle basic operation on {@link Measure} data type.
+ * 
+ * @author Mario Randazzo
+ *
+ */
 @Path("/private/measure")
 @Stateless
 public class MeasureService {

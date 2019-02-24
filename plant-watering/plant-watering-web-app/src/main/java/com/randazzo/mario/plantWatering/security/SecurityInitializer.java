@@ -9,7 +9,6 @@ import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableKeyException;
 
-import javax.ejb.Startup;
 import javax.ejb.Stateless;
 import javax.enterprise.event.Observes;
 
@@ -27,6 +26,14 @@ import com.randazzo.mario.plantWatering.security.model.ApplicationRole;
 import com.randazzo.mario.plantWatering.security.model.User;
 
 
+/**
+ * Populates the identity store with a default administrator user and some roles. 
+ * We also load the private and public key from a keystore in order to properly 
+ * sign and validate tokens.
+ * 
+ * @author Mario Randazzo
+ *
+ */
 @Stateless
 public class SecurityInitializer {
 

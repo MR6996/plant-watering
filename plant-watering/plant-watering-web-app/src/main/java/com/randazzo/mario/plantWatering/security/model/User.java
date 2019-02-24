@@ -14,6 +14,14 @@ import org.picketlink.idm.query.QueryParameter;
 
 import com.randazzo.mario.plantWatering.model.Person;
 
+/**
+ * Custom {@link org.picketlink.idm.model.Account} type to represent the application users.
+ * The field <code>person</code> provides a link between application's data model and
+ *  the identity model provided by PicketLink.
+ * 
+ * @author Mario Randazzo
+ *
+ */
 @IdentityStereotype(USER)
 public class User extends AbstractIdentityType implements Account {
 

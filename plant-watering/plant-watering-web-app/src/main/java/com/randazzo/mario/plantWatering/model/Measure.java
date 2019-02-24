@@ -11,6 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+/**
+ * Represents a sensor measurement for a given {@link Plant}.
+ * 
+ * @author Mario Randazzo
+ *
+ */
 @Entity(name = "measure")
 public class Measure implements Serializable {
 

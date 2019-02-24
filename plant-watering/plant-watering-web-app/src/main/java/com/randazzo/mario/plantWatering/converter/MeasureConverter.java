@@ -6,6 +6,14 @@ import com.randazzo.mario.plantWatering.converter.annotation.MeasureType;
 import com.randazzo.mario.plantWatering.dto.MeasureDTO;
 import com.randazzo.mario.plantWatering.model.Measure;
 
+/**
+ * Implementation of a {@link Converter} for {@link Measure} data type.
+ * 
+ * @author Mario Randazzo
+ *
+ * @see MeasureType 
+ *
+ */
 @Stateless
 @MeasureType
 public class MeasureConverter implements Converter<Measure, MeasureDTO> {

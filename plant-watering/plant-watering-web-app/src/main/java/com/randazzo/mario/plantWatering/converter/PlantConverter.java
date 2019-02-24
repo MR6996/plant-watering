@@ -10,6 +10,14 @@ import com.randazzo.mario.plantWatering.dto.PlantDTO;
 import com.randazzo.mario.plantWatering.model.Person;
 import com.randazzo.mario.plantWatering.model.Plant;
 
+/**
+ * Implementation of a {@link Converter} for {@link Plant} data type.
+ * 
+ * @author Mario Randazzo
+ *
+ * @see PlantType
+ *
+ */
 @Stateless
 @PlantType
 public class PlantConverter implements Converter<Plant, PlantDTO> {

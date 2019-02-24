@@ -13,6 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+/**
+ * Represets a plant owns by a {@link Person} in the application. 
+ * 
+ * @author Mario Randazzo
+ *
+ */
 @Entity(name = "plant")
 public class Plant implements Serializable {
 

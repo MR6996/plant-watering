@@ -16,6 +16,12 @@ import com.randazzo.mario.plantWatering.dto.PersonDTO;
 import com.randazzo.mario.plantWatering.model.Person;
 import com.randazzo.mario.plantWatering.security.model.User;
 
+/**
+ * RESTFul endpoint responsible for getting information of a {@link Person} data type.
+ * 
+ * @author Mario Randazzo
+ *
+ */
 @Path("/private/account")
 @Stateless
 public class AccountService {

@@ -1,4 +1,3 @@
-
 package com.randazzo.mario.plantWatering.security.service;
 
 import static com.randazzo.mario.plantWatering.security.model.ApplicationRole.USER;
@@ -23,6 +22,12 @@ import com.randazzo.mario.plantWatering.security.model.UserRegistration;
 import com.randazzo.mario.plantWatering.utils.MessageBuilder;
 
 
+/**
+ * RESTFul endpoint responsible for create a new user account.
+ * 
+ * @author Mario Randazzo
+ *
+ */
 @Path("/register")
 @Stateless
 public class RegistrationService implements Serializable {

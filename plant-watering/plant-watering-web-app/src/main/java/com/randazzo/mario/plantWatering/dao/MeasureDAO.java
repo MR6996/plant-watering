@@ -6,6 +6,12 @@ import javax.persistence.PersistenceContext;
 
 import com.randazzo.mario.plantWatering.model.Measure;
 
+/**
+ * DAO for {@link Measure} data type.
+ * 
+ * @author Mario Randazzo
+ *
+ */
 @Stateless
 public class MeasureDAO {
 

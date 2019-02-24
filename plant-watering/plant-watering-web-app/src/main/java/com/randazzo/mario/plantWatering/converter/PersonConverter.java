@@ -6,6 +6,14 @@ import com.randazzo.mario.plantWatering.converter.annotation.PersonType;
 import com.randazzo.mario.plantWatering.dto.PersonDTO;
 import com.randazzo.mario.plantWatering.model.Person;
 
+/**
+ * Implementation of a {@link Converter} for {@link Person} data type.
+ * 
+ * @author Mario Randazzo
+ *
+ * @see PersonType
+ *
+ */
 @Stateless
 @PersonType
 public class PersonConverter implements Converter<Person, PersonDTO> {

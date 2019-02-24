@@ -19,6 +19,13 @@ import com.randazzo.mario.plantWatering.model.Person;
 import com.randazzo.mario.plantWatering.security.authentication.JWSToken;
 
 
+/**
+ * This class provides an abstraction point to the Identity Management operations 
+ * required by the application.
+ * 
+ * @author Mario Randazzo
+ *
+ */
 @Stateless
 public class IdentityModelManager {
 

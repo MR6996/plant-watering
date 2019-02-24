@@ -11,6 +11,12 @@ import org.picketlink.idm.jpa.model.sample.simple.IdentityTypeEntity;
 import com.randazzo.mario.plantWatering.model.Person;
 import com.randazzo.mario.plantWatering.security.model.User;
 
+/**
+ * This entity is responsible to map {@link User}.
+ * 
+ * @author Mario Randazzo
+ *
+ */
 @Entity
 @IdentityManaged(User.class)
 public class UserTypeEntity extends IdentityTypeEntity {

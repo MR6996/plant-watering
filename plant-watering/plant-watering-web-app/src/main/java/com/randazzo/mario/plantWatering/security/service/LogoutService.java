@@ -1,4 +1,3 @@
-
 package com.randazzo.mario.plantWatering.security.service;
 
 import javax.ejb.Stateless;
@@ -14,7 +13,9 @@ import org.picketlink.idm.model.Account;
 import com.randazzo.mario.plantWatering.security.authentication.JWSToken;
 
 /**
+ * RESTFul endpoint responsible for perform logout.
  *
+ * @author Mario Randazzo
  */
 @Path("/private/logout")
 @Stateless

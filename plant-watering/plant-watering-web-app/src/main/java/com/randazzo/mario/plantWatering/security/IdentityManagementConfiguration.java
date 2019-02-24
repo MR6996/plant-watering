@@ -11,6 +11,13 @@ import org.picketlink.event.SecurityConfigurationEvent;
 import com.randazzo.mario.plantWatering.security.model.User;
 
 
+/**
+ * A CDI observer for the {@link org.picketlink.event.SecurityConfigurationEvent}.
+ * All the configuration to PicketLink Identity Management is provided from this bean.
+ * 
+ * @author Mario Randazzo
+ *
+ */
 @ApplicationScoped
 public class IdentityManagementConfiguration implements Serializable {
 

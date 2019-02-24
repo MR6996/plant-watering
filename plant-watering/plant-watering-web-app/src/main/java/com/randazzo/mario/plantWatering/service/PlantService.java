@@ -24,6 +24,12 @@ import com.randazzo.mario.plantWatering.model.Plant;
 import com.randazzo.mario.plantWatering.security.model.User;
 import com.randazzo.mario.plantWatering.utils.MessageBuilder;
 
+/**
+ * RESTFul endpoint responsible for handle basic operation on {@link Plant} data type.
+ * 
+ * @author Mario Randazzo
+ *
+ */
 @Path("/private/plant")
 @Stateless
 public class PlantService {
